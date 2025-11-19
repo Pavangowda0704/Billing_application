@@ -21,7 +21,15 @@ let currentHardwareState = {
     weight: 0
 };
 
-app.use(cors());
+// --- CORS CONFIGURATION ---
+app.use(cors({
+    origin: [
+        "https://billing-application-sable.vercel.app", // Your Vercel App
+        "http://localhost:5173" // Your Local Computer (for testing)
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+}));
 app.use(express.json());
 
 // --- Database Connection ---
